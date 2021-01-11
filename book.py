@@ -79,7 +79,6 @@ def scrapper(urls):
             places = '-'
         dic['places'].append(places)
 
-    df = 
     df2 = pd.DataFrame(dic)
     result = pd.concat([df, df2], axis=1).to_csv('Best_2000s.csv')
     t2 = time.time()
