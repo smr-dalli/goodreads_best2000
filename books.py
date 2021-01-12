@@ -86,29 +86,49 @@ def scrapper(urls):
     print("Time taken: ", int(time_total), " seconds.")
     return df2
 
-def data_clean(df):
-    ## sparse minirating column to get avg_rating and num_ratings
+def clean_data(df):
+    ## parse minirating column to get avg_rating and num_ratings
     df['avg_rating'] = df['minirating'].apply(lambda x: (x.split('— ')[0]))
     df['avg_rating'] = df['avg_rating'].apply(lambda x: x.replace(' avg rating', ''))
     df['avg_rating'] = df['avg_rating'].apply(lambda x: x.replace(' ', '').replace('reallylikedit', '').strip())
-
     df['num_ratings'] = df['minirating'].apply(lambda x: (x.split('— ')[1]))
     df['num_ratings'] = df['num_ratings'].apply(lambda x: x.replace(' ratings', '').replace(',',''))
 
+    df.drop('minirating', inplace=True, axis=1)
+    df.drop(['Unnamed: 0', 'Number'], axis=1, inplace=True)
+   
+    ## create awards_count
+    df['awards'] = df['awards'].astype(str)
+    awa_split = df['awards'].apply(lambda x:x.split(","))
+    awa_count = awa_split.apply(lambda x:len(x))
+    df['awards_count'] = awa_count
+    
     return df
 
 def preprocessing(df):
-    df = data_clean(df)
+    df = clean_data(df)
     df.avg_rating = pd.to_numeric(df.avg_rating, errors="coerce")
     df.num_ratings = pd.to_numeric(df.num_ratings, errors="coerce")
 
+    # normalization 1 - 10
     scaler = MinMaxScaler((1, 10))
     df['minmax_norm_rating'] = scaler.fit_transform(df[['avg_rating']])
     df['mean_norm_ratings'] = 1 + (df['avg_rating'] - df['avg_rating'].mean()) / (df['avg_rating'].max() - df['avg_rating'].min()) * 9
+    
+    # rounding the values
+    df['minmax_norm_rating'] = df['minmax_norm_rating'].apply(lambda x:round(x, 2))
+    df['mean_norm_ratings'] = df['mean_norm_ratings'].apply(lambda x:round(x,2))
+    
     return df
 
+def authors_best(authorName, df):
+    authorData = df[df['Author']==authorName]
+    bestBook = authorData[authorData.minmax_norm_rating == authorData.minmax_norm_rating.max()]
+    return bestBook
+
 def analyse(df):
-    pass
+    groupby_minmax = df.groupby('year_published')['minmax_norm_rating'].agg('mean')
+    return groupby_minmax    
 
 if __name__ == '__main__':
     # Scrap 1000 books to csv.
@@ -120,3 +140,5 @@ if __name__ == '__main__':
     ''' 
     df = pd.read_csv('Best_2000s.csv')
     books = preprocessing(df)
+    group_by_year = analyse(books)
+    print(group_by_year)
