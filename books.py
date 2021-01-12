@@ -122,9 +122,9 @@ def preprocessing(df):
     return df
 
 def authors_best(authorName, df):
-    authorData = df[df['Author']==authorName]
-    bestBook = authorData[authorData.minmax_norm_rating == authorData.minmax_norm_rating.max()]
-    return bestBook
+    authors_books = df[df['Author']==authorName]
+    authors_best_book = authors_books[authors_books.minmax_norm_rating == authors_books.minmax_norm_rating.max()]
+    return authors_best_book
 
 def analyse(df):
     groupby_minmax = df.groupby('year_published')['minmax_norm_rating'].agg('mean')
