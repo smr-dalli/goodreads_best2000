@@ -4,6 +4,7 @@
 
 1. Web Scraping: Scrape the data, and change to CSV file----> Marcin, @Sai Mohan Reddy Dalli 
 2. Preprocessing, and normalization ---> @Saurabh Satasia
+
 ~~3. Analysis---> Deepa~~
 
 GIT master: Marcin
