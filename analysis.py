@@ -13,11 +13,14 @@ def minmax_year(df):
     return groupby_minmax    
 
 ## Visualisations.
+
+# 2. Can you compute numerically the correlation coefficient of these two columns (in this case whole dataframe)?
 def plot_correlations(df):
     table = df.corr()
     x.style.background_gradient(cmap = 'coolwarm')
     return table
 
+# 1. Create a 2D scatterplot with `pages` on the x-axis and `num_ratings` on the y-axis.
 def scatter_pages_num_ratings(df, fig_size, sample):
     df = df.sample(n = sample)
     fig = plt.figure(1, fig_size) 
@@ -28,6 +31,7 @@ def scatter_pages_num_ratings(df, fig_size, sample):
     print("Correlation:", df['avg_rating'].corr(df['num_ratings']))
     return fig
 
+# 3. Visualise the avg_rating distribution.
 def avg_rating_dist(df, fig_size):
     fig = plt.figure(3, fig_size)
     sns.distplot(df.avg_rating)
@@ -35,6 +39,7 @@ def avg_rating_dist(df, fig_size):
     plt.title('Average rating Distribution')
     return fig
 
+# 4. Visualise the minmax_norm_rating distribution.
 def minmax_norm_dist(df, fig_size):
     fig = plt.figure(4, fig_size)
     sns.distplot(df.minmax_norm_rating, bins = 25,color='green')
@@ -42,6 +47,7 @@ def minmax_norm_dist(df, fig_size):
     plt.title('Minmax_norm rating distribution')
     return fig
 
+# 5. Visualise the mean_norm_rating distribution.
 def mean_norm_dist(df, fig_size):
     fig = plt.figure(5, fig_size)
     sns.distplot(df.mean_norm_ratings, bins=25,color='orange')
@@ -49,6 +55,7 @@ def mean_norm_dist(df, fig_size):
     plt.title('Mean_norm rating distribution')
     return fig
 
+# 6. Create one graph that represents in the same figure both minmax_norm_rating and mean_norm_rating distributions.
 def norm_comparison(df, fig_size):
     fig = plt.figure(6, fig_size)
     ax = fig.add_subplot(111)
@@ -59,6 +66,7 @@ def norm_comparison(df, fig_size):
     ax.legend()
     return fig
 
+# 8. Visualize the awards distribution in a boxplot and aggregtated bars. (in this case just boxplot)
 def awards_boxplot(df, fig_size):
     fig = plt.figure(8, fig_size)
     plt.boxplot(df.awards_count)
@@ -66,6 +74,7 @@ def awards_boxplot(df, fig_size):
     plt.title('Awards distribution')
     return fig
 
+# 9. "Group the books by original_publish_year and get the mean of the minmax_norm_ratings of the groups."
 def yearly_minmax_mean(df, fig_size):
     df = minmax_year(df)
     fig = plt.figure(9, fig_size)
@@ -75,6 +84,7 @@ def yearly_minmax_mean(df, fig_size):
     plt.title('Means of normalized ratings over the years.')
     return fig
 
+# 10. Make a scatterplot to represent minmax_norm_ratings in function of the number of awards won by the book.
 from sklearn.linear_model import LinearRegression
 def minmax_awards(df, fig_size):
     df = df[df['minmax_norm_rating'].notna()]
