@@ -1,4 +1,4 @@
-# Buld week #1 
+# Build week #1 
 
 #### *1. Webscrap of 1000 best books of the 00's decade from goodreads.com including over 12 parameters.*
 
