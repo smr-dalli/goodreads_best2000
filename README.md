@@ -1,21 +1,21 @@
 # Buld week #1 
 
-*1. Webscrap of 1000 best books of the 00's decade from goodreads.com including over 12 parameters.*
+###### *1. Webscrap of 1000 best books of the 00's decade from goodreads.com including over 12 parameters.*
 
-*2. Processing of the data to a clear, readable pandas dataframe.*
+###### *2. Processing of the data to a clear, readable pandas dataframe.*
 
-*3. Analysis of the data under various statements represented on plots.*
+###### *3. Analysis of the data under various statements represented on plots.*
 
-*4. Web & CLI apps allowing easy access to the data.*
+###### *4. Web & CLI apps allowing easy access to the data.*
 
 
 **Credits:**
 
-Saurabh https://github.com/saurabhsatasia
+Saurabh @saurabhsatasia
 
-Sai https://github.com/smr-dalli
+Sai @smr-dalli
 
-Marcin https://github.com/martinezpl/
+Marcin @martinezpl
 
 
 ## Correlations between parameters:
