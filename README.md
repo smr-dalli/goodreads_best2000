@@ -25,12 +25,14 @@
 
 ## Example charts:
 
+### Distribution fit over minmax_norm_rating histogram.
 ![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/distribution_fit.png)
 
+### Awards count boxplot.
 ![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/boxplot_awards.png)
 
+### Comparison of minmax & mean normalized ratings.
 ![normalization comparisons](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/norm_comparison.png)
 
+### Coefficient of determination.
 ![scatter_minmax_awards_linreg](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/scatter_minmax_awards_linreg.png)
-
-![minmax_year](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/minmax_mean_year.png)
