@@ -11,11 +11,11 @@
 
 ###### **Credits:**
 
-###### Saurabh @https://github.com/saurabhsatasia
+###### Saurabh https://github.com/saurabhsatasia
 
-###### Sai @https://github.com/smr-dalli
+###### Sai https://github.com/smr-dalli
 
-###### Marcin @https://github.com/martinezpl
+###### Marcin https://github.com/martinezpl
 
 
 ## Correlations between parameters:
