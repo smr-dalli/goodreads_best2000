@@ -38,7 +38,7 @@
 ![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/8awards_cnt_minmax_norm_scatter.png)
 
 ### Comparison of minmax & mean normalized ratings.
-![normalization comparisons](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/norm_comparison.png)
+![normalization comparisons](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/5comparison_mean_minmax.png)
 
 ### Coefficient of determination.
 ![scatter_minmax_awards_linreg](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/scatter_minmax_awards_linreg.png)
