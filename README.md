@@ -15,10 +15,8 @@
 # Team Tasks:
 
 * Day 1
-
 * Task 1:
-#### *From of the following website [good reads](https://www.goodreads.com/), Webscrapping of 1000 best books from [list](https://www.goodreads.com/list/show/5.Best_Books_of_the_Decade_2000s) including over 12 parameters.*
-
+  #### *From of the following website [good reads](https://www.goodreads.com/), Webscrapping of 1000 best books from [list](https://www.goodreads.com/list/show/5.Best_Books_of_the_Decade_2000s) including over 12 parameters.*
   * Task 1.1:
   #### *Cleaning the data to drop null values and convert the data types of the parameters to readable pandas dataframe.*
   * Task 1.2:
