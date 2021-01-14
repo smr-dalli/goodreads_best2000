@@ -21,18 +21,7 @@
 ## Dataset after scrapping, data cleaning, and calculating minmax/mean norm rating:
 
 
-
 ![orginal_dataset](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/Complete%20data%20set.PNG)
-
-## Data cleaning and calculating minmax/mean norm rating:
-
-
-![data_cleaning](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/Minmax_mean_norm_rating_df.PNG)
-
-## Analysis of the data:
-
-![analysis](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/Analysis.PNG)
-
 
 
 ## Correlations between parameters:
