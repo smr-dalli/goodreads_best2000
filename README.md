@@ -34,7 +34,7 @@
 ### Distribution fit over minmax_norm_rating histogram.
 ![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/2minmax_norm_dist.png)
 
-### Awards count boxplot.
+### Awards count min_max_norm_rating.
 ![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/8awards_cnt_minmax_norm_scatter.png)
 
 ### Comparison of minmax & mean normalized ratings.
