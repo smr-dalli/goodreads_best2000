@@ -35,7 +35,7 @@
 ![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/2minmax_norm_dist.png)
 
 ### Awards count boxplot.
-![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/boxplot_awards.png)
+![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/8awards_cnt_minmax_norm_scatter.png)
 
 ### Comparison of minmax & mean normalized ratings.
 ![normalization comparisons](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/norm_comparison.png)
