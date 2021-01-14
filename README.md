@@ -18,10 +18,11 @@
 ###### Marcin https://github.com/martinezpl
 
 
-## Dataset from scrapping:
+## Dataset after scrapping, data cleaning, and calculating minmax/mean norm rating:
 
 
-![orginal_dataset](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/orginal_df.PNG)
+
+![orginal_dataset](https://embed.deepnote.com/8bf5fab1-d9d5-4ebb-b2e0-ceb3380b4dc5/058a38a0-03f1-4645-af8f-88adc10cf786/00004-32fe2308-402c-461b-bfad-271bc2383ba1?height=462.98614501953125)
 
 ## Data cleaning and calculating minmax/mean norm rating:
 
