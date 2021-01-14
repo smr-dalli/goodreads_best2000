@@ -19,7 +19,7 @@
 ####  * Task 1.2: Pre-processing the data to calculate the min max norm rating and mean max norm rating.
 ####  * Task 1.3: Analyse the data to group particular parameters and finding the mean of the other parameters.
   
-#### Complete Dataset
+#### Complete Dataset:
 
 ![orginal_dataset](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/Complete%20data%20set.PNG)
 
