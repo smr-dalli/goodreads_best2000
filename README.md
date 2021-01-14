@@ -32,7 +32,7 @@
 ## Example visualisation charts:
 
 ### Distribution fit over minmax_norm_rating histogram.
-![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/distribution_fit.png)
+![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/2minmax_norm_dist.png)
 
 ### Awards count boxplot.
 ![boxplot_awards](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/boxplot_awards.png)
