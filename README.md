@@ -1,23 +1,32 @@
-# First Build Week
+# First Build Week 
 
-#Team:
+## Team Mcgonagall
+
 ![team](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/704x396.jpg)
 
-###### **Team Players:**
+## **Team Players:**
 
-###### Marcin https://github.com/martinezpl
+#### Marcin https://github.com/martinezpl
 
-###### Saurabh https://github.com/saurabhsatasia
+#### Saurabh https://github.com/saurabhsatasia
 
-###### Sai https://github.com/smr-dalli
+#### Sai https://github.com/smr-dalli
 
 # Team Tasks:
 
-#### *1. Webscrap of 1000 best books of the 00's decade from goodreads.com including over 12 parameters.*
+* Day 1
 
-#### *2. Processing of the data to a clear, readable pandas dataframe.*
+* Task 1:
+#### *From of the following website [good reads](https://www.goodreads.com/), Webscrapping of 1000 best books from [list](https://www.goodreads.com/list/show/5.Best_Books_of_the_Decade_2000s) including over 12 parameters.*
 
-#### *3. Analysis of the data under various statements represented on plots.*
+  * Task 1.1:
+  #### *Cleaning the data to drop null values and convert the data types of the parameters to readable pandas dataframe.*
+  * Task 1.2:
+  #### *Pre-processing the data to calculate the min max norm rating and mean max norm rating.*
+  * Task 1.3:
+  #### *Analyse the data to group particular parameters and finding the mean of the other parameters.*
+  
+
 
 #### *4. Web & CLI apps allowing easy access to the data.*
 
