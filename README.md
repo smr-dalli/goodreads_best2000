@@ -12,25 +12,25 @@
 
 #### Sai https://github.com/smr-dalli
 
-# Team Tasks:
+## Team Tasks:
 
-* Task 1: From of the following website [good reads.com](https://www.goodreads.com/), Webscrapping of 1000 best books from [Best Books of the Decade 2000s](https://www.goodreads.com/list/show/5.Best_Books_of_the_Decade_2000s) including over 12 parameters.
-  * Task 1.1: Cleaning the data to drop null values and convert the data types of the parameters to readable pandas dataframe.
-  * Task 1.2: Pre-processing the data to calculate the min max norm rating and mean max norm rating.
-  * Task 1.3: Analyse the data to group particular parameters and finding the mean of the other parameters.
+#### Task 1: From of the following website [good reads.com](https://www.goodreads.com/), Webscrapping of 1000 best books from [Best Books of the Decade 2000s](https://www.goodreads.com/list/show/5.Best_Books_of_the_Decade_2000s) including over 12 parameters.
+####  * Task 1.1: Cleaning the data to drop null values and convert the data types of the parameters to readable pandas dataframe.
+####  * Task 1.2: Pre-processing the data to calculate the min max norm rating and mean max norm rating.
+####  * Task 1.3: Analyse the data to group particular parameters and finding the mean of the other parameters.
   
-## Complete Dataset
+### Complete Dataset
 
 ![orginal_dataset](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/Complete%20data%20set.PNG)
 
-* Task 2: Visualisation of the data with respective to the other parameters and find out the relation amoung the parameters.
+#### Task 2: Visualisation of the data with respective to the other parameters and find out the relation amoung the parameters.
 
-## Correlations between parameters:
+### Correlations between parameters:
 
 ![correlations](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/correlations.png)
 
 
-## Example visualisation charts:
+### Example visualisation charts:
 
 ### Distribution fit over minmax_norm_rating histogram.
 ![minmax_dist_fit](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/2minmax_norm_dist.png)
