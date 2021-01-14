@@ -1,4 +1,17 @@
-# Build week #1 
+# First Build Week
+
+#Team:
+![team](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/704x396.jpg)
+
+###### **Team Players:**
+
+###### Marcin https://github.com/martinezpl
+
+###### Saurabh https://github.com/saurabhsatasia
+
+###### Sai https://github.com/smr-dalli
+
+# Team Tasks:
 
 #### *1. Webscrap of 1000 best books of the 00's decade from goodreads.com including over 12 parameters.*
 
@@ -9,13 +22,7 @@
 #### *4. Web & CLI apps allowing easy access to the data.*
 
 
-###### **Credits:**
 
-###### Saurabh https://github.com/saurabhsatasia
-
-###### Sai https://github.com/smr-dalli
-
-###### Marcin https://github.com/martinezpl
 
 
 ## Dataset after scrapping, data cleaning, and calculating minmax/mean norm rating:
