@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-from bs4 import BeautifulSoup
 from sklearn.preprocessing import MinMaxScaler
 
 def clean_data(df):
@@ -38,25 +36,18 @@ def preprocessing(df):
     df = clean_data(df)
     
     ## parse minirating column to get avg_rating and num_ratings
-    df['avg_rating'] = df['minirating'].apply(lambda x: (x.split('— ')[0]))
-    df['avg_rating'] = df['avg_rating'].apply(lambda x: x.replace(' avg rating', ''))
-    df['avg_rating'] = df['avg_rating'].apply(lambda x: x.replace(' ', '').replace('reallylikedit', '').strip())
-    df['num_ratings'] = df['minirating'].apply(lambda x: (x.split('— ')[1]))
-    df['num_ratings'] = df['num_ratings'].apply(lambda x: x.replace(' ratings', '').replace(',',''))
+    df['avg_rating'] = df['minirating'].apply(lambda x: (x.split('— ')[0])).apply(lambda x: x.replace(' avg rating', '')).apply(lambda x: x.replace(' ', '').replace('reallylikedit', '').strip())
+    df['num_ratings'] = df['minirating'].apply(lambda x: (x.split('— ')[1])).apply(lambda x: x.replace(' ratings', '').replace(',',''))
 
     df.drop('minirating', inplace=True, axis=1)
     df.drop('Unnamed: 0', inplace=True, axis=1)
 
     ## create awards_count
-    df['awards'] = df['awards'].astype(str)
-    awa_split = df['awards'].apply(lambda x:x.split(","))
-    awa_count = awa_split.apply(lambda x:len(x))
-    df['awards_count'] = awa_count
+    df['awards_count'] =  df['awards'].apply(lambda x:len(x))
     
     df.avg_rating = pd.to_numeric(df.avg_rating, errors="coerce")
     df.num_ratings = pd.to_numeric(df.num_ratings, errors="coerce")
-    df['num_pages'] = df['num_pages'].apply(lambda x: int(x) if x is not np.nan else np.nan) 
-    
+
     # normalization 1 - 10
     scaler = MinMaxScaler((1, 10))
     df['minmax_norm_rating'] = scaler.fit_transform(df[['avg_rating']])
@@ -70,5 +61,6 @@ def preprocessing(df):
 
 if __name__ == '__main__':
     df = preprocessing(pd.read_csv('raw_scrap.csv'))
-    df.to_pickle("Best_00s.pkl")
-    df.to_csv("Best_00s.csv")
+    #df.to_pickle("Best_00s.pkl")
+    #df.to_csv("Best_00s.csv")
+    df
