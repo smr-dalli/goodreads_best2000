@@ -2,7 +2,7 @@ import click
 import pandas as pd
 from scrapper.scrapper import scrap_goodreads_table
 from scrapper.preprocess import preprocessing
-from res.charts import *
+from webapp.res.charts import *
 
 @click.group()
 def cli():
@@ -22,6 +22,7 @@ def scrap_table(pages, f, name, url):
         df.to_json(fn)
     elif f == 'pkl':
         df.to_pickle(fn)
+    print(df)
 
 @click.command()
 @click.option('--corr', default=False, help='shows correlations between columns')
@@ -44,7 +45,8 @@ def analyze(corr, ratdist, data):
         print(plot_correlation(df))
     
     if ratdist:
-        
+        all_three_dist(df).show()
+
 cli.add_command(scrap_table)
 cli.add_command(analyze)
 
