@@ -1,6 +1,6 @@
-# First Build Week 
+# Build Week #1
 
-## Team Mcgonagall
+## Team McGonagall
 
 ![team](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/704x396.jpg)
 
