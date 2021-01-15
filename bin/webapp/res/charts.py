@@ -18,7 +18,7 @@ def authors_best(authorsName, df):
 def place_title(bookName, df):
     authors_books = df[df['Title']==bookName]
     place = authors_books['places']
-    return place
+    return place.to_string(header = False, index = False)
 
 # ---- Visualisations ---- 
 
@@ -169,7 +169,7 @@ def awards_boxplot(df):
                       paper_bgcolor="rgb(93,93,93)", yaxis_range=[0,25],showlegend=True)
 
     fig.layout.width = 800
-    fig.layout.height = 800
+    fig.layout.height = 500
     return fig
 
 # 9. "Group the books by original_publish_year and get the mean of the minmax_norm_ratings of the groups."
@@ -180,7 +180,7 @@ def yearly_minmax_mean(df):
     fig = px.bar(groupby_year, x='year_published', y='minmax_norm_rating', color='Title', hover_data=['Title'], template='plotly_dark', opacity=0.7)
     fig.update_layout(title='Books, Publish year vs minmax_norm', margin=dict(l=40, r=40, t=40, b=40),
                       paper_bgcolor="rgb(93,93,93)", showlegend=False)
-    fig.layout.width = 1200
+    fig.layout.width = 800
     fig.layout.height = 500
     return fig
 
