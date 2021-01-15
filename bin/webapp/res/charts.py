@@ -8,7 +8,7 @@ import plotly.figure_factory as ff
 def authors_best(authorsName, df):
     authors_books = df[df['Author']==authorsName]
     authors_best_book = authors_books[authors_books.minmax_norm_rating == authors_books.minmax_norm_rating.max()]
-    return authors_best_book['Title']
+    return (authors_best_book['Title'].to_string(header = False, index = False))
 
 # Just to generate map
 def place_title(bookName, df):
@@ -21,9 +21,9 @@ def place_title(bookName, df):
 # 1. Create a 2D scatterplot with pages on the x-axis and num_ratings on the y-axis.
 def scatter_pages_num_rating(df):
     df=df.sample(n=200)
-    df['num_pages'] = df['num_pages'].sort_values()
+    # df['num_pages'] = df['num_pages'].sort_values()
     fig = px.scatter(df, x="num_pages", y="num_ratings",template='plotly_dark')  #  df['num_pages'].sort_values()
-    fig.update_layout(title='pages vs num_ratings', margin=dict(l=50, r=50, t=50, b=50), paper_bgcolor="rgb(93,93,93)",
+    fig.update_layout(title='pages vs num_ratings', paper_bgcolor="rgb(93,93,93)",
                       xaxis_range=[50,1400], yaxis_range=[0,1200000], showlegend=True)
     return fig
 
@@ -43,15 +43,15 @@ def plot_correlation(df):
 # 3. Visualise the avg_rating distribution.
 def avg_rating_dist(df):
     # marginal violin, rug
-    fig = px.histogram(df, x="avg_rating", marginal="violin", hover_data=df.columns, color_discrete_sequence=px.colors.qualitative.Dark24,
-                       template='plotly_dark', opacity=0.7)
+    fig = px.histogram(df, x="avg_rating", marginal="box", hover_data=df.columns, color_discrete_sequence=px.colors.qualitative.Dark24,
+                       template='plotly_dark', opacity=1)
     fig.update_layout(title='avg_rating Distribution', margin=dict(l=40, r=40, t=40, b=40), paper_bgcolor="rgb(93,93,93)")
     return fig
 
 # 4. Visualise the minmax_norm_rating distribution.
 def minmax_norm_dist(df):
     # ['Alphabet','Antique','Bold','D3','Dark2','Dark24','G10']
-    fig = px.histogram(df, x="minmax_norm_rating", marginal="rug", hover_data=df.columns,
+    fig = px.histogram(df, x="minmax_norm_rating", marginal="box", hover_data=df.columns,
                        color_discrete_sequence=px.colors.qualitative.Antique, template='plotly_dark', opacity=0.7)
     fig.update_layout(title='minmax_norm_rating Distribution', margin=dict(l=40, r=40, t=40, b=40),
                       paper_bgcolor="rgb(93,93,93)")
@@ -108,7 +108,7 @@ def yearly_minmax_mean(df):
 
     fig = px.bar(groupby_year, x='year_published', y='minmax_norm_rating', color='Title', hover_data=['Title'], template='plotly_dark', opacity=0.7)
     fig.update_layout(title='Books, Publish year vs minmax_norm', margin=dict(l=40, r=40, t=40, b=40),
-                      paper_bgcolor="rgb(93,93,93)", showlegend=True)
+                      paper_bgcolor="rgb(93,93,93)", showlegend=False)
     fig.layout.width = 1200
     fig.layout.height = 500
     return fig
@@ -116,9 +116,10 @@ def yearly_minmax_mean(df):
 # 10.
 def minmax_awards(df):
     df = df[df['minmax_norm_rating'].notna()]
-    fig = px.scatter(data_frame=df, x="minmax_norm_rating", y="awards_count", color="awards_count" ,  # size="Title",
-                     trendline='ols', hover_name='Title', opacity=0.7, template='plotly_dark', marginal_x='histogram',
-                     marginal_y='box')
+    fig = px.scatter(data_frame=df, x="minmax_norm_rating", y="awards_count",    # size="Title", color="awards_count"
+                     trendline='ols', hover_name='Title', opacity=0.9, template='plotly_dark', )
+    #  marginal_x='histogram',
+    #                      marginal_y='box'
     fig.update_layout(title='Y = (0.1218*minmax_norm_rating)-(2.6884*awards_count)-->R^2=0.0026', margin=dict(l=40, r=40, t=40, b=40),
                       paper_bgcolor="rgb(93,93,93)", showlegend=True)
     fig.layout.width = 800

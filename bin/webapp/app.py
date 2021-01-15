@@ -5,23 +5,24 @@ import datetime
 from geopy.geocoders import Nominatim
 from res.charts import *
 from res.bg import set_png_as_page_bg
-
+from style import *
 def st_app():
     #Sidebar
 
     #st.set_page_config(layout="wide")
     image = Image.open('PromoHP1_Minerva_McGonagall_2.jpg')
     st.sidebar.image(image, width = 300, height = 200)
-    st.sidebar.title('Team McGonagall')
+    st.sidebar.markdown(html_temp_1.format("Team: McGonagall"), unsafe_allow_html=True)
     st.sidebar.header("Build Week 1")
     today = st.sidebar.date_input("Presentation day is", datetime.datetime.now())
-    st.sidebar.subheader("""Players:\n
-    Marcin Szleszynski [click](https://github.com/martinezpl)\n
-    Saurabh Satasia [click](https://github.com/saurabhsatasia)\n
-    Sai Mohan Reddy Dalli [click](https://github.com/smr-dalli)""")
+    st.sidebar.subheader("Players:")
+    st.sidebar.markdown("""
+* [Marcin Szleszynski](https://github.com/martinezpl)
+* [Saurabh Satasia](https://github.com/saurabhsatasia)
+* [Sai Mohan Reddy Dalli](https://github.com/smr-dalli)""")
     st.sidebar.subheader('Our Sponsors:')
-    st.sidebar.markdown("""Jan Carbonell [click](https://github.com/jcllobet)\n
-    Antonnio Marsella [click](https://github.com/AntonioMarsella)""")
+    st.sidebar.markdown("""[Jan Carbonell](https://github.com/jcllobet)\n
+[Antonnio Marsella](https://github.com/AntonioMarsella)""")
 
     #Title
     st.header('Welcome to our webpage, we are happy to see you:)')
@@ -57,34 +58,13 @@ def st_app():
     filtered1 = df[df.num_pages >= threshold1]
     st.dataframe(filtered1[column])
 
-    st.subheader("About Team McGonagall:")
-    "We are strives and we love to publish our articles to help developers with the useful data. Follow us on [Github](" \
-    "https://github.com/martinezpl/goodreads_best2000) for more exciting projects. All the best for your future endeavors! "
 
-    st.subheader(" Do you find this page interesting? ")
-    x = [1,2,3,4,5]
-    rate = st.multiselect('On a scale of 1 - 5, how informative is this website?',x)
-    st.subheader("Leave a comment:")
-    st.text_area('Thank you for your participation:)','Type here..')
-    st.button('Post comment')
-    set_png_as_page_bg('res/hog.jpg')
-    bgcolor = st.color_picker("Pick a Background color")
-    fontcolor = st.color_picker("Pick a Font Color", "#fff")
+    set_png_as_page_bg('res/hog-1.png')
 
-    html_temp_1 = """<div style="background-color:{};padding:10px">
-    <h1 style="color:{};text-align:center;">Team : McGonagall </h1>
-    </div>"""
-    html_temp_2 = """<div style="background-color:#54545A;padding:4px">
-        <h4 style="color:#6CF906;text-align:center;">{} </h4>
-        </div>"""
-    html_temp_3 = """<div style="background-color:#54545A;padding:4px">
-            <h3 style="color:#EFF5F5;text-align:center;">{} </h3>
-            </div>"""
-    st.markdown(html_temp_1.format(bgcolor, fontcolor), unsafe_allow_html=True)
-    # st.markdown("""<div><p style='color:{}'>Hello Strive</p></div>""".format(bgcolor), unsafe_allow_html=True)
-    # st.title("Team : McGonagall")
+    st.markdown("""\n\n""")
+
     st.sidebar.selectbox("Choose", ['Project', 'About'])
-    st.header("Task --> Best books of the decade:2000 ")
+    st.markdown(html_temp_2.format("Best books of the decade: 2000"), unsafe_allow_html=True)
     #columns = ['Title', 'Author', 'minirating', 'num_reviews', 'num_pages', 'awards', 'genres', 'series', 'year_published', 'places']
     df = pd.read_csv('Best_00s.csv')
     df=df.drop("Title_URL", axis=1)
@@ -94,59 +74,56 @@ def st_app():
 
     # ANALYSIS
     ## EX-1
-    st.markdown(html_temp_3.format("ANALYSIS"))
+    st.markdown(html_temp_3.format("ANALYSIS"), unsafe_allow_html=True)
     str1= "1. Group the books by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups."
-    st.markdown(html_temp_2.format(str1),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str1),unsafe_allow_html=True)
     # st.info("""### *1. Group the books by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups.*""")
     groupby_minmax = df.groupby('year_published').agg({'minmax_norm_rating':'mean'})
     col1,col2 = st.beta_columns([2,4])
     groupby_minmax = groupby_minmax.style.set_properties(**{'background-color': 'black', 'color': 'white', 'border-color': 'blue'})
     with col1: st.dataframe(groupby_minmax)
-    with col2:
-        if st.button("PLOT"):
-            st.area_chart(groupby_minmax)
+    with col2: st.area_chart(groupby_minmax)
 
     # EX-2
     str2= '2. Create a function that given an author as input it returns her/his book with the highest minmax_norm_ratings.'
-    st.markdown(html_temp_2.format(str2),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str2),unsafe_allow_html=True)
     # st.info("""### *2. Create a function that given an author as input it returns her/his book with the highest minmax_norm_ratings.*""")
     col3,col4 = st.beta_columns(2)
     with col3: auth = st.selectbox("Select Author", df['Author'].unique().tolist())
     with col4: st.error(authors_best(auth, df))
 
     st.markdown(html_temp_3.format("VISUALIZATION"),unsafe_allow_html=True)
-    # st.subheader("VISUALIZATION")
     # EX-1
     str3='1. Create a 2D scatterplot with `pages` on the x-axis and `num_ratings` on the y-axis.'
-    st.markdown(html_temp_2.format(str3),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str3),unsafe_allow_html=True)
     # st.info("""### *1. Create a 2D scatterplot with `pages` on the x-axis and `num_ratings` on the y-axis.*""")
     ex_1 = scatter_pages_num_rating(df)
     st.plotly_chart(ex_1)
-    st.subheader("Same plot using Streamlit-line_vega_chart")
-    plotly_line_vega(df)
+    # st.subheader("Same plot using Streamlit-line_vega_chart")
+    # plotly_line_vega(df)
 
     # EX-2
     str4='2. Can you compute numerically the correlation coefficient of these two columns?'
-    st.markdown(html_temp_2.format(str4),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str4),unsafe_allow_html=True)
     # st.info("""### *2. Can you compute numerically the correlation coefficient of these two columns?* """)
     st.write(plot_correlation(df))
 
     # EX-3
     str5 = '3. Visualise the `avg_rating` distribution.'
-    st.markdown(html_temp_2.format(str5),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str5),unsafe_allow_html=True)
     # st.info("""### *3. Visualise the `avg_rating` distribution.*""")
     ex_3 = avg_rating_dist(df)
     st.plotly_chart(ex_3)
 
     # EX-4
     str6 = '4. Visualise the `minmax_norm_rating` distribution.'
-    st.markdown(html_temp_2.format(str6),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str6),unsafe_allow_html=True)
     # st.info("""### *4. Visualise the `minmax_norm_rating` distribution.*""")
     st.plotly_chart(minmax_norm_dist(df))
 
     # EX-5
     str7 = '5. Visualise the `mean_norm_rating` distribution.'
-    st.markdown(html_temp_2.format(str7),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str7),unsafe_allow_html=True)
     # st.info("""### *5. Visualise the `mean_norm_rating` distribution.*""")
     st.plotly_chart(mean_norm_dist(df))
     st.subheader("All distribution in one!!")
@@ -154,25 +131,25 @@ def st_app():
 
     # EX-6
     str8 = '6. Create one graph that represents in the same figure both `minmax_norm_rating` and `mean_norm_rating` distributions.'
-    st.markdown(html_temp_2.format(str8),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str8),unsafe_allow_html=True)
     # st.info("""### *6. Create one graph that represents in the same figure both `minmax_norm_rating` and `mean_norm_rating` distributions.*""")
     st.plotly_chart(norm_comparison(df))
 
     # EX-8
     str9 = '8. Visualize the awards distribution in a boxplot and aggregtated bars.'
-    st.markdown(html_temp_2.format(str9),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str9),unsafe_allow_html=True)
     # st.info("""### *8. Visualize the awards distribution in a boxplot and aggregtated bars.*""")
     st.plotly_chart(awards_boxplot(df))
 
     # EX-9
     str10 = 'Group the `books` by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups.'
-    st.markdown(html_temp_2.format(str10),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str10),unsafe_allow_html=True)
     # st.info("""### *9. Group the `books` by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups.*""")
     st.plotly_chart(yearly_minmax_mean(df))
 
     # EX-10
     str11 = 'Make a scatterplot to represent minmax_norm_ratings in function of the number of awards won by the book.'
-    st.markdown(html_temp_2.format(str11),unsafe_allow_html=True)
+    st.markdown(html_temp_4.format(str11),unsafe_allow_html=True)
     # st.info("""### *10. Make a scatterplot to represent minmax_norm_ratings in function of the number of awards won by the book.*""")
     st.plotly_chart(minmax_awards(df))  #
     # st.pyplot(minmax_awards_2(df,fig_size=(10,10))) ## Old matplotlib plot
@@ -184,7 +161,7 @@ def st_app():
 
     # Explore maps in streamlit
     str_m = "1. Books and Places."
-    st.markdown(html_temp_2.format(str_m), unsafe_allow_html=True)
+    st.markdown(html_temp_3.format(str_m), unsafe_allow_html=True)
     book = st.selectbox("Select Book", df['Title'].unique())
     df_res = pd.DataFrame(place_title(book,df))
     place = st.write(df_res.style.set_properties(**{'background-color': 'black', 'color': 'white', 'border-color': 'blue'}))
@@ -197,6 +174,18 @@ def st_app():
         lon = location.longitude
         map_df = pd.DataFrame.from_dict({"lat": [lat], "lon": [lon]})
         st.map(map_df)
+
+    st.markdown(html_temp_2.format("About Team McGonagall:"), unsafe_allow_html=True)
+    # st.subheader("About Team McGonagall:")
+    "We are strives and we love to publish our articles to help developers with the useful data. Follow us on [Github](" \
+    "https://github.com/martinezpl/goodreads_best2000) for more exciting projects. All the best for your future endeavors! "
+
+    st.subheader(" Do you find this page interesting? ")
+    x = [1, 2, 3, 4, 5]
+    rate = st.multiselect('On a scale of 1 - 5, how informative is this website?', x)
+    st.subheader("Leave a comment:")
+    st.text_area('Thank you for your participation:)', 'Type here..')
+    st.button('Post comment')
 
 if __name__ == "__main__":
     st_app()
