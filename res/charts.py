@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as sl
-import scipy.stats as st
 from tqdm import tqdm
 import plotly.express as px
 import plotly.figure_factory as ff
@@ -92,75 +91,6 @@ def norm_comparison(df):
     fig.layout.height = 500
     return fig
 
-# 7. just show pngs on streamlit but not working
-## 7. 
-def fit_scipy_distributions(array, bins, xlabel='x label', ylabel='y label', plot_hist = True, plot_best_fit = True, plot_all_fits = False):
-    
-    if plot_best_fit or plot_all_fits:
-        assert plot_hist, "plot_hist must be True if setting plot_best_fit or plot_all_fits to True"
-    
-    # Returns un-normalised (i.e. counts) histogram
-    y, x = np.histogram(np.array(array), bins=bins)
-    
-    # Some details about the histogram
-    bin_width = x[1]-x[0]
-    N = len(array)
-    x_mid = (x + np.roll(x, -1))[:-1] / 2.0 # go from bin edges to bin middles
-    
-    # selection of available distributions
-    # CHANGE THIS IF REQUIRED
-    DISTRIBUTIONS = [st.alpha,st.cauchy,st.cosine,st.laplace,st.levy,st.levy_l,st.norm, st.chi2]   #stats.chi2
-
-    if plot_hist:
-        fig = plt.figure(figsize=(15,12), facecolor='w')
-        fig, ax = plt.subplots(facecolor = 'w')
-        h = ax.hist(np.array(array), bins = bins, color = 'tab:olive')
-
-    # loop through the distributions and store the sum of squared errors
-    # so we know which one eventually will have the best fit
-    sses = []
-    for dist in tqdm(DISTRIBUTIONS):
-        name = dist.__class__.__name__[:-4]
-
-        params = dist.fit(np.array(array))
-        arg = params[:-2]
-        loc = params[-2]
-        scale = params[-1]
-
-        pdf = dist.pdf(x_mid, loc=loc, scale=scale, *arg)
-        pdf_scaled = pdf * bin_width * N # to go from pdf back to counts need to un-normalise the pdf
-
-        sse = np.sum((y - pdf_scaled)**2)
-        sses.append([sse, name])
-
-        # Not strictly necessary to plot, but pretty patterns
-        if plot_all_fits:
-            ax.plot(x_mid, pdf_scaled, label = name)
-    
-    if plot_all_fits:
-        plt.legend(loc=1)
-
-    # CHANGE THIS IF REQUIRED
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
-
-    # Things to return - df of SSE and distribution name, the best distribution and its parameters
-    results = pd.DataFrame(sses, columns = ['SSE','distribution']).sort_values(by='SSE') 
-    best_name = results.iloc[0]['distribution']
-    best_dist = getattr(st, best_name)
-    best_params = best_dist.fit(np.array(array))
-    
-    if plot_best_fit:
-        new_x = np.linspace(x_mid[0] - (bin_width * 2), x_mid[-1] + (bin_width * 2), 1000)
-        best_pdf = best_dist.pdf(new_x, *best_params[:-2], loc=best_params[-2], scale=best_params[-1])
-        best_pdf_scaled = best_pdf * bin_width * N
-        ax.plot(new_x, best_pdf_scaled, label = best_name)
-        plt.legend(loc=1)
-    
-    if plot_hist:
-        plt.show()
-    
-    return results, best_name, best_params
 # 8. Visualize the awards distribution in a boxplot and aggregtated bars. (in this case just boxplot)
 def awards_boxplot(df):
     fig = px.violin(df, y="awards_count", box=True,  # draw box plot inside the violin

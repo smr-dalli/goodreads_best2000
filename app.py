@@ -143,12 +143,6 @@ def st_app():
     # st.pyplot(minmax_awards_2(df,fig_size=(10,10))) ## Old matplotlib plot
     st.markdown("""\n\n\n\n""")
 
-    # EX-7 Not working
-    str12='What is the best fit in terms of a distribution (normal, chi-squared...) to represent each of those graphs?'
-    st.markdown(html_temp_2.format(str12), unsafe_allow_html=True)
-    #st.image("C:/Users/User/Desktop/presebtation/goodreads_best2000/distribution_fit.png")
-    image2 = Image.open('distribution_fit.png')
-    st.image(image2, width=300, height=200)
     
 
 
