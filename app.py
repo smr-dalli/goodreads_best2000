@@ -82,17 +82,6 @@ def st_app():
     st.markdown("""**------------------------------------------------------------------------------------------------------------**""")
 
     # ANALYSIS
-    ## EX-1
-    st.markdown(html_temp_3.format("ANALYSIS"), unsafe_allow_html=True)
-    st.markdown("""\n\n\n""")
-    str1= "1. Group the books by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups."
-    st.markdown(html_temp_4.format(str1),unsafe_allow_html=True)
-    # st.info("""### *1. Group the books by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups.*""")
-    groupby_minmax = df.groupby('year_published').agg({'minmax_norm_rating':'mean'})
-    col1,col2 = st.beta_columns([2,4])
-    groupby_minmax = groupby_minmax.style.set_properties(**{'background-color': 'gray', 'color': 'white', 'border-color': 'blue'})
-    with col1: st.dataframe(groupby_minmax)
-    with col2: st.area_chart(groupby_minmax)
 
 
     st.markdown("""**------------------------------------------------------------------------------------------------------------**""")
@@ -101,7 +90,7 @@ def st_app():
     st.markdown("""\n\n\n""")
 
     # EX-1
-    str3='1. Create a 2D scatterplot with `pages` on the x-axis and `num_ratings` on the y-axis.'
+    str3='The more pages the better? Not exactly!!!'
     st.markdown(html_temp_4.format(str3),unsafe_allow_html=True)
     ex_1 = scatter_pages_num_rating(df)
     st.plotly_chart(ex_1)
@@ -109,60 +98,59 @@ def st_app():
     # plotly_line_vega(df)
     st.markdown("""\n\n\n\n""")
     # EX-2
-    str4='2. Can you compute numerically the correlation coefficient of these two columns?'
+    str4='Correlation Heat map.'
     st.markdown(html_temp_4.format(str4),unsafe_allow_html=True)
     st.write(plot_correlation(df))
     st.markdown("""\n\n\n\n""")
 
     # EX-3
-    str5 = '3. Visualise the `avg_rating` distribution.'
+    str5 = 'Average rating distribution.'
     st.markdown(html_temp_4.format(str5),unsafe_allow_html=True)
     ex_3 = avg_rating_dist(df)
     st.plotly_chart(ex_3)
     st.markdown("""\n\n\n\n""")
 
-    # EX-4
-    str6 = '4. Visualise the `minmax_norm_rating` distribution.'
-    st.markdown(html_temp_4.format(str6),unsafe_allow_html=True)
-    st.plotly_chart(minmax_norm_dist(df))
-    st.markdown("""\n\n\n\n""")
+   
 
     # EX-5
-    str7 = '5. Visualise the `mean_norm_rating` distribution.'
+    str7 = 'Compare all distribution.'
     st.markdown(html_temp_4.format(str7),unsafe_allow_html=True)
-    st.plotly_chart(mean_norm_dist(df))
     st.plotly_chart(all_three_dist(df))
     st.markdown("""\n\n\n\n""")
 
     # EX-6
-    str8 = '6. Create one graph that represents in the same figure both `minmax_norm_rating` and `mean_norm_rating` distributions.'
+    str8 = 'Compare the normalised data.'
     st.markdown(html_temp_4.format(str8),unsafe_allow_html=True)
     st.plotly_chart(norm_comparison(df))
     st.markdown("""\n\n\n\n""")
 
     # EX-8
-    str9 = '8. Visualize the awards distribution in a boxplot and aggregtated bars.'
+    str9 = 'How common are the awards?'
     st.markdown(html_temp_4.format(str9),unsafe_allow_html=True)
     st.plotly_chart(awards_boxplot(df))
     st.markdown("""\n\n\n\n""")
 
     # EX-9
-    str10 = 'Group the `books` by `original_publish_year` and get the mean of the `minmax_norm_ratings` of the groups.'
+    str10 = 'Which was the best year for books?'
     st.markdown(html_temp_4.format(str10),unsafe_allow_html=True)
     st.plotly_chart(yearly_minmax_mean(df))
     st.markdown("""\n\n\n\n""")
 
     # EX-10
-    str11 = 'Make a scatterplot to represent minmax_norm_ratings in function of the number of awards won by the book.'
+    str11 = 'Literary awards versus public opinion.'
     st.markdown(html_temp_4.format(str11),unsafe_allow_html=True)
     st.plotly_chart(minmax_awards(df))  #
     # st.pyplot(minmax_awards_2(df,fig_size=(10,10))) ## Old matplotlib plot
     st.markdown("""\n\n\n\n""")
 
     # EX-7 Not working
-    # str12='What is the best fit in terms of a distribution (normal, chi-squared...) to represent each of those graphs?'
-    # st.markdown(html_temp_2.format(str12), unsafe_allow_html=True)
-    # st.image("D:/Strive/st/goodreads_best2000-main/pngs/distribution_fit.png")
+    str12='What is the best fit in terms of a distribution (normal, chi-squared...) to represent each of those graphs?'
+    st.markdown(html_temp_2.format(str12), unsafe_allow_html=True)
+    #st.image("C:/Users/User/Desktop/presebtation/goodreads_best2000/distribution_fit.png")
+    image2 = Image.open('distribution_fit.png')
+    st.image(image2, width=300, height=200)
+    
+
 
     st.markdown("""**------------------------------------------------------------------------------------------------------------**""")
 
