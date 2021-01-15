@@ -1,5 +1,11 @@
 # Build Week #1
 
+Scrapping/analysis tool for www.goodreads.com. Features:
+
+- CLI providing universal scrapper for goodreads lists.
+- Customizable streamlit-based web application hosted on heroku.
+- Various analysis functions providing plots and juxtapositions.
+
 ## Team McGonagall
 
 ![team](https://github.com/martinezpl/goodreads_best2000/blob/main/pngs/704x396.jpg)
